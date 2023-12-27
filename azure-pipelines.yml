@@ -12,6 +12,6 @@ stages:
   jobs: 
   - job: job1
     steps:
-    - script: echo 'this is script running as part of job 1 of stage 1'
+    - bash: echo 'this is script running as part of job 1 of stage 1'
 
 
