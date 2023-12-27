@@ -12,6 +12,23 @@ stages:
   jobs: 
   - job: job1
     steps:
-    - bash: echo 'this is script running as part of job 1 of stage 1'
+    - bash: echo 'this is script 1 running as part of job 1 of stage 1'
+    - script: echo 'this is script 2 running as part of job 1 of stage 1'
 
+- stage: SecondStage
+  displayName: This is Second Stage
+  jobs: 
+  - job: stg2job1
+    steps:
+    - bash: echo 'this is script 1 running as part of job 1 of stage 2'
+  - job: stg2job2 
+    steps: 
+    - script: echo 'this is script 1 running as part of job 2 of stage 2'
 
+- stage: ThirdStage 
+  dependsOn: SecondStage
+  displayName: This is Third Stage 
+  jobs:
+  - job: job1 
+    steps: 
+    - script: echo "This will execute after completion of stage 2 ONLY"
