@@ -1,0 +1,17 @@
+# This is my first "yaml" pipeline
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: FirstStage
+  displayName: This is first Stage
+  jobs: 
+  - job: job1
+    steps:
+    - script: echo 'this is script running as part of job 1 of stage 1'
+
+
